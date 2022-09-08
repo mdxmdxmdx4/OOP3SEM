@@ -1,1 +1,0 @@
-this is sample to show how to works git diff
