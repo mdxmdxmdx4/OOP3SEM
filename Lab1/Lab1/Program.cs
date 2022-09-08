@@ -16,8 +16,10 @@ namespace Lab1
             short TaskA6 = -12314;
             int TaskA7 = 10;
             double TaskA8 = 7.1234123;
-            Console.WriteLine(".........1)Типы..........\n ----Task A----\n Bool = {0} \n Char = {1} \n Long = {2} \n Decimal = {3} \n" +
-                " Float = {4} \n Short = {5} \n Int = {6}\n Double = {7}\n ", TaskA1, TaskA2, TaskA3, TaskA4, TaskA5, TaskA6, TaskA7, TaskA8);
+            Console.WriteLine(".........1)Типы..........\n" +
+                " ----Task A----\n Bool = {0} \n Char = {1} \n Long = {2} \n Decimal = {3} \n" +
+                " Float = {4} \n Short = {5} \n Int = {6}\n Double = {7}\n ",
+                TaskA1, TaskA2, TaskA3, TaskA4, TaskA5, TaskA6, TaskA7, TaskA8);
             //task B
             int b1 = Convert.ToInt16(0.981231);  //1 явное
             Console.WriteLine("----Task B---- \n b1 = " + b1 + " , " + b1.GetType());
@@ -108,6 +110,15 @@ namespace Lab1
                 Console.Write("\n");
             }
             //Task B
+            string[] StringArr = { "scars", "up", "on", "my", "wrist" };
+            Console.WriteLine("----Task B----:\n");
+            foreach (var elem in StringArr)
+            {
+                Console.Write(elem + " ");
+            }
+            Console.WriteLine("\nКакой элемент вы хотите поменять? (1-" + StringArr.Count() + " ");
+            int x = Console.Read();
+            Console.WriteLine("Введите замену");
 
             // 4 Кортежи
             /*
