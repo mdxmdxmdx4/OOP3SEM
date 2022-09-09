@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Specialized;
+using System.Text;
 
 namespace Lab1
 {
@@ -114,11 +115,17 @@ namespace Lab1
             Console.WriteLine("----Task B----:\n");
             foreach (var elem in StringArr)
             {
-                Console.Write(elem + " ");
+                Console.Write(elem + ",");
             }
-            Console.WriteLine("\nКакой элемент вы хотите поменять? (1-" + StringArr.Count() + " ");
-            int x = Console.Read();
-            Console.WriteLine("Введите замену");
+            Console.WriteLine("\nWhich element you want to change? (0-" + (StringArr.Count() - 1) + ") ");
+            int zzz = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Write a standin");
+            StringArr[zzz] = Console.ReadLine();
+            Console.WriteLine("New Array:");
+            foreach (var elem in StringArr)
+            {
+                Console.Write(elem + ",");
+            }
 
             // 4 Кортежи
             /*
