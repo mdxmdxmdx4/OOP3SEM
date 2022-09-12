@@ -7,6 +7,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black;
             //         1) Типы
             //task A
             bool TaskA1 = true;
@@ -115,7 +116,7 @@ namespace Lab1
             Console.WriteLine("----Task B----:\n");
             foreach (var elem in StringArr)
             {
-                Console.Write(elem + ",");
+                Console.Write(elem + " | ");
             }
             Console.WriteLine("\nWhich element you want to change? (0-" + (StringArr.Count() - 1) + ") ");
             int zzz = Convert.ToInt32(Console.ReadLine());
@@ -126,7 +127,38 @@ namespace Lab1
             {
                 Console.Write(elem + ",");
             }
+            //Task C           !!!!!!!!!!!!!!!!!!!!!! ДОДЕЛАТЬ!!!!!!!!!!!!
+            Console.WriteLine("\n\n----Task C---");
+            float[][] StepArray = new float[3][];
+            for (var ai = 1; ai < 4; ai++)
+            {
+                StepArray[ai - 1] = new float[ai + 1];
+            }
 
+            for (var bi = 0; bi < 3; bi++)
+            {
+                for (var j = 0; j < StepArray[bi].Length; j++)
+                {
+                    Console.WriteLine("StepArray[{0}][{1}]: ", bi, j);
+                    StepArray[bi][j] = float.Parse(Console.ReadLine());
+                }
+            }
+            Console.WriteLine();
+            for (var ci = 0; ci < 3; ci++)
+            {
+                for (var j = 0; j < StepArray[ci].Length; j++)
+                {
+                    Console.Write("{0} ", StepArray[ci][j]);
+                }
+
+                Console.WriteLine();
+            }
+
+            //
+            Console.WriteLine("----Task D---");
+            var array1 = new object[0];
+            var str = "";
+            Console.WriteLine("1st type: {0} ,2nd type: {1}",array1.GetType(), str.GetType());
             // 4 Кортежи
             /*
                         (int, string, char, string, ulong) referens = (1, "HEad", 'g', "food", 65758758);
