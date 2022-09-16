@@ -8,6 +8,11 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
+            string debil = "ksk";
+            string debil2 = "ksk";
+            string debil3 = "ктоэтонаписал";
+            Console.WriteLine(String.Compare(debil2, debil));
+
             Console.BackgroundColor = ConsoleColor.Black;
             //         1) Типы
             //task A
@@ -169,13 +174,10 @@ namespace Lab1
                         Console.WriteLine("1st item" + reference.Item1);
                         Console.WriteLine("2nd item" + reference.Item3);
                         Console.WriteLine("3rd itme" + reference.Item5);
-
-            Console.WriteLine(" ----Task B----");
             int int1;
             string string01, string02;
             char char1;
             ulong ulong1;
-            Console.WriteLine(" ----Task C----");
             (_, string1, _, _, ulong1) = reference;
             (int1 , _, char1, string2, _) = reference;
             Console.WriteLine(" ----Task D----");
