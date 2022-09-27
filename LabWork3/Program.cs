@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections;
+using System.Drawing;
 
 namespace Laba03
 {
-
 
     class Stack<T>
     {
@@ -22,6 +22,7 @@ namespace Laba03
 
         public void PrintAll() //Печать всего списка
         {
+            Console.WriteLine("\nStack");
             while (current != null)
             {
                 Console.WriteLine(current.Data);
@@ -84,14 +85,129 @@ namespace Laba03
         private ListItem<T> first;
         private ListItem<T> current;
         private int kolvo = 0;
+
+
+//------------------------------------------------------------------------------------------------------------
+        public static Stack<T> operator +(Stack<T> example, T item)
+        {
+            example.kolvo++;     //Грубо говоря, используем Push()
+            ListItem<T> I = new ListItem<T>(item);
+
+            if (example.first == null)
+            {
+                I.Next = null;
+            }
+            else
+            {
+                I.Next = example.first;
+
+            }
+            example.first = I;
+            example.current = I;
+            Console.Write("\nПерегрузка оператора +");
+            return example;
+        }
+
+        public static Stack<T> operator --(Stack<T> example)
+        {
+
+            example.current = example.current.Next;
+            Console.WriteLine("\n" + example.first.Data + " - извлеченный элемент списка, перегрузка оператора декремент");
+            example.first = null;
+            example.first = example.current;
+            example.kolvo--;
+            return example;
+
+        }
+
+        public static bool operator true(Stack<T> example)
+        {
+            if (example.current != null)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator false(Stack<T> example)
+        {
+            if (example.current == null)
+                return true;
+            else
+                return false;
+        }
+
+        //________________________
+        public void copyy(Stack<T> st2)
+        {
+       
+             while (current != null)
+            {
+              ListItem<T> I = new ListItem<T>(current.Data);
+                      
+                current = current.Next;
+
+             if (st2.first == null)
+            {
+                I.Next = null;
+            }
+            else
+            {
+                I.Next = st2.first;
+
+            }
+            st2.first = I;
+            st2.current = I;
+            }
+
+        }
+
+        public void sort(Stack<T> st1)
+        {
+            dynamic temp;
+            while ((st1.current != null) && (st1.current.Next != null))
+            {
+                if (Convert.ToInt32(st1.current.Data) < Convert.ToInt32(st1.current.Next.Data))
+                {
+                    temp = st1.current.Data;
+                    st1.current.Data = st1.current.Next.Data;
+                    st1.current.Next.Data = temp;
+                    current = first;
+                }
+                else
+                {
+                    current = current.Next;
+
+                }
+              
+            }
+            current = first;
+        }
+        //------------------------------------
+
+
+        public static Stack<T> operator >(Stack<T> st1, Stack<T> st2)
+        {
+            st1.copyy(st2);
+            st2.sort(st2);
+
+            return st2;
+        }
+        public static Stack<T> operator <(Stack<T> st1, Stack<T> st2)
+        {
+            st2.copyy(st1);
+            st1.sort(st1);
+
+            return st1;
+        }
+
+
     }
-
-
 
     class Program
     {
         static void Main(string[] args)
         {
+
+
             Stack<int> MyStack = new Stack<int>();
             MyStack.Push(1);
             MyStack.Push(2);
@@ -107,6 +223,37 @@ namespace Laba03
             MyStack.Push(1);
             MyStack.PrintAll();
             MyStack.Count();
+
+//------------------------------------------------------- перегрузка операторов
+
+            MyStack += 2;
+            MyStack.PrintAll();
+            MyStack--;
+            MyStack.PrintAll();
+
+            if (MyStack)
+                Console.WriteLine("Стек не пуст");
+            else
+                Console.WriteLine("Стек пуст");
+            MyStack--;
+            if (MyStack)
+                Console.WriteLine("Стек не пуст");
+            else
+                Console.WriteLine("Стек пуст");
+
+            MyStack.Push(100);
+            MyStack.Push(11);
+            MyStack.Push(28);
+            MyStack.Push(99);
+            MyStack.Push(14);
+            MyStack.PrintAll();
+            Stack<int> MyStack2 = new Stack<int>();
+            MyStack2 = MyStack > MyStack2;
+            MyStack2.PrintAll();
+
+
+
+
 
         }
     }
