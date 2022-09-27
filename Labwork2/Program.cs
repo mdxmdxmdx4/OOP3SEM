@@ -11,9 +11,12 @@ namespace lab2
         private int _RaceNumber;
         private string _AirplaneType;
         private string _WeekDay;
-        private DateTime _TimeOfDestination;
+        private DateTime _TimeOfDep;
         private const int MaxRaceNumber = 999;
-        public int RaceNumber
+        private const int maxTimeD = 24;
+        private static int kolvo;
+        public readonly int id;
+        public int RaceNumber               // v - свойства 
         {
             set
             {
@@ -40,74 +43,71 @@ namespace lab2
             set { this._WeekDay = value; }
             get { return this._WeekDay; }
         }
-        public DateTime TimeOfDestination
+        public DateTime TimeOfDep
         {
-            set { this._TimeOfDestination = value; }
-            get { return this._TimeOfDestination; }
+            set { this._TimeOfDep= value; }
+            get { return this._TimeOfDep; }
         }
 
 
-
-        private const int maxTimeD = 24;
-        private static int kolvo;
-        public readonly int id;
-        static Airline()
+        static Airline()    //статический конструктор
         {
             kolvo = 0;
         }
 
 
-        public Airline(string Destination, int RaceNumber, string AirplaneType, string WeekDay, DateTime TimeOfDestination)
+        public Airline(string Destination, int RaceNumber, string AirplaneType, string WeekDay, DateTime TimeOfDep) //конструктор с параметрами
         {
             id = kolvo;
             _Destination = Destination;
             _RaceNumber = RaceNumber;
             _AirplaneType = AirplaneType;
             _WeekDay = WeekDay;
-            _TimeOfDestination = TimeOfDestination;
+            _TimeOfDep = TimeOfDep;
             kolvo++;
         }
-        public Airline()
+        public Airline()    //конструктор без параметров
         {
             id = kolvo;
             _Destination = "no data";
             _RaceNumber = 0;
             _AirplaneType = "no data";
             _WeekDay = "no data";
-            _TimeOfDestination = DateTime.MinValue;
+            _TimeOfDep = DateTime.MinValue;
             kolvo++;
         }
-        ~Airline()
+        ~Airline()      //деструктор
         {
             kolvo--;
         }
 
-        public static void Weekday_check(Airline[] Air, out string needed_day)
+        public static void Weekday_check(Airline[] Air, out string needed_day)   //проверка по дню недели
         {
 
             Console.WriteLine("Insert a weekday");
 
             needed_day = Console.ReadLine();
-            bool IsExist = false;
+            bool IsExistt = false;
 
             foreach (Airline day in Air)
             {
                 if (needed_day == day.WeekDay)
                 {
                     Console.WriteLine("Finded race:{0} {1} {2} {3}", day.Destination, day.RaceNumber, day.AirplaneType,
-                        day.TimeOfDestination);
-                    IsExist = true;
+                        day.TimeOfDep);
+                    IsExistt = true;
                 }
             }
-            if (IsExist = false)
+            if (IsExistt = false)
             {
                 Console.WriteLine("No results found :(");
 
             }
         }
 
-        public static void destination_check(Airline[] arr, ref string needed_weekday)
+        public static void destination_check(Airline[] arr, ref string needed_weekday) //проверка по месту назначения
         {
+            needed_weekday = "Bagdad";
             bool IsExists = false;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -115,7 +115,7 @@ namespace lab2
                 {
                     IsExists = true;
                     Console.WriteLine("Finded race: " + arr[i].Destination + " " + arr[i].RaceNumber + " " + arr[i].AirplaneType + " " +
-                    arr[i].WeekDay + " " + arr[i].TimeOfDestination);
+                    arr[i].WeekDay + " " + arr[i].TimeOfDep);
                 }
             }
             if (IsExists == false)
@@ -127,13 +127,13 @@ namespace lab2
 
 
 
-        public static void printall(Airline[] array)
+        public static void printall(Airline[] array)          //вывод информации
         {
             Console.WriteLine("\n");
             for (int i = 0; i < 6; i++)
             {
                 Console.WriteLine("Race " + array[i].id + ": " + array[i]._Destination + " " + array[i]._RaceNumber + " "
-                    + array[i]._AirplaneType + " " + array[i]._WeekDay + " " + array[i]._TimeOfDestination);
+                    + array[i]._AirplaneType + " " + array[i]._WeekDay + " " + array[i]._TimeOfDep);
             }
 
 
@@ -157,7 +157,7 @@ namespace lab2
                 return false;
             return (temp.Destination == this.Destination && temp.WeekDay == this.WeekDay &&
             temp.RaceNumber == this.RaceNumber && temp.AirplaneType == this.AirplaneType &&
-            temp.TimeOfDestination == this.TimeOfDestination);
+            temp.TimeOfDep == this.TimeOfDep);
         }
 
     }
@@ -168,10 +168,10 @@ namespace lab2
         {
             Airline[] airline = new Airline[6] {
                 new Airline("Bagdad", 12, "Boeing", "Monday", new DateTime(2022, 09, 11, 23, 00, 00)),
-                new Airline("Kiev", 151, "Boeing", "Friday", new DateTime(2022, 09, 15, 16, 45, 00)),
-                new Airline("Warsaw", 75, "Boeing", "Tuesday", new DateTime(2022, 09, 15, 19, 00, 00)),
+                new Airline("Kiev", 151, "Airbus", "Friday", new DateTime(2022, 09, 15, 16, 45, 00)),
+                new Airline("Warsaw", 75, "Airbus", "Tuesday", new DateTime(2022, 09, 15, 19, 00, 00)),
                 new Airline("Beigin", 99, "Boeing", "Tuesday", new DateTime(2022, 09, 20, 22, 45, 00)),
-                new Airline("Qatar", 151, "Boeing", "Wednesday", new DateTime(2022, 09, 29, 03, 30, 00)),
+                new Airline("Qatar", 151, "Belavia", "Wednesday", new DateTime(2022, 09, 29, 03, 30, 00)),
                 new Airline()
             };
 
@@ -179,26 +179,29 @@ namespace lab2
             airline[2].AirplaneType = "NotBoeing";
             airline[3].RaceNumber = 111;
             airline[4].WeekDay = "Sunday";
-            //airlane[5].Destination = "Madrid";  
+            //airlane[5].Destination = "Madrid";    //error
             airline[5].AirplaneType = "QatarAirways";
             airline[5].RaceNumber = 1099;
             airline[5].WeekDay = "Saturday";
-            airline[5].TimeOfDestination = new DateTime(2022, 10, 1, 11, 00, 00);
+            airline[5].TimeOfDep = new DateTime(2022, 10, 1, 11, 00, 00);
             Airline.printall(airline);
             Console.WriteLine("\nType of airline[*]" + airline[2].GetType + "\n");
             Console.WriteLine(airline[1].GetHashCode());
             Console.WriteLine("Checking equality of 2 objects:" + (airline[0].Equals(airline[5])));
             Console.WriteLine("\n\nEnter the city of destination:");
             string needed_place = Console.ReadLine();
+            Console.WriteLine("value of needed_place after using ref keyword:" + needed_place);
             Airline.destination_check(airline, ref needed_place);
             string needed_day;
             Airline.Weekday_check(airline, out needed_day);
 
-
-
             //Sample sample = new Sample(); //error
             Sample.Create(2);
 
+            //анонимный тип
+            var someplane = new { Destination = "Rome", RaceNubmer = 969, AirplaneType = "Cessna", WeekDay = "Saturday", TimeOfDep = new DateTime(2022, 09, 15, 16, 45, 00) };
+            Console.WriteLine("\n" + someplane.GetType());
+           // someplane.Destination = "Tbilisi"; //error
         }
 
 
