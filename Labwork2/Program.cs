@@ -190,11 +190,12 @@ namespace lab2
             Console.WriteLine("Checking equality of 2 objects:" + (airline[0].Equals(airline[5])));
             Console.WriteLine("\n\nEnter the city of destination:");
             string needed_place = Console.ReadLine();
-            Console.WriteLine("value of needed_place after using ref keyword:" + needed_place);
+
             Airline.destination_check(airline, ref needed_place);
+            Console.WriteLine("value of needed_place after using ref keyword:" + needed_place);
             string needed_day;
             Airline.Weekday_check(airline, out needed_day);
-
+            Console.WriteLine("---------------------------------------------------------------" + needed_day);
             //Sample sample = new Sample(); //error
             Sample.Create(2);
 

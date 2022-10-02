@@ -5,7 +5,6 @@ using System.Drawing;
 
 namespace Laba03
 {
-
     class Stack<T>
     {
         class ListItem<T>
@@ -15,10 +14,59 @@ namespace Laba03
 
             public ListItem(T item)
             {
-                this.Data = item;
+                Data = item;
             }
         }
 
+
+
+        Stack a;
+        public T this[int i]
+        {
+            get
+            {
+                if(i < 0 || i >= kolvo)
+                {
+                    return default(T);
+                }
+                int indexer = 0;
+
+                foreach (var item in a)
+                {
+                    if(indexer == i)
+                    {
+                        return (T)item;
+                    }
+
+                    indexer++;
+                }
+                return default(T);
+            }
+            set
+            {
+                if (i < 0 || i >= kolvo)
+                {
+                    throw new ArgumentException();
+                }
+
+                int indexer = 0;
+
+                var newStack = new Stack();
+
+                foreach(var item in a)
+                {
+                    if(indexer == i)
+                    {
+                        newStack.Push(value);
+                    }
+
+                    newStack.Push((T)item);
+                    indexer++;
+                }
+
+                a = newStack;
+            }
+        }
 
         public void PrintAll() //Печать всего списка
         {
@@ -160,16 +208,16 @@ namespace Laba03
 
         }
 
-        public void sort(Stack<T> st1)
+        public void sort()
         {
             dynamic temp;
-            while ((st1.current != null) && (st1.current.Next != null))
+            while ((current != null) && (current.Next != null))
             {
-                if (Convert.ToInt32(st1.current.Data) < Convert.ToInt32(st1.current.Next.Data))
+                if (Convert.ToInt32(current.Data) < Convert.ToInt32(current.Next.Data))
                 {
-                    temp = st1.current.Data;
-                    st1.current.Data = st1.current.Next.Data;
-                    st1.current.Next.Data = temp;
+                    temp = current.Data;
+                    current.Data = current.Next.Data;
+                    current.Next.Data = temp;
                     current = first;
                 }
                 else
@@ -187,19 +235,22 @@ namespace Laba03
         public static Stack<T> operator >(Stack<T> st1, Stack<T> st2)
         {
             st1.copyy(st2);
-            st2.sort(st2);
+            st2.sort();
 
             return st2;
         }
         public static Stack<T> operator <(Stack<T> st1, Stack<T> st2)
         {
             st2.copyy(st1);
-            st1.sort(st1);
+            st1.sort();
 
             return st1;
         }
 
-
+        public static implicit operator Stack(Stack<T> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class Program
