@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="lab004.Planet" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab004.Water" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab004.Ground" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab004.Sea" Collapsed="true">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAAAAAAEAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="lab004.Continent" Collapsed="true">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAACEAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab004.Government" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAACAAAAAASAAAAAEAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab004.Island" Collapsed="true">
+    <Position X="7" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAEAAABA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

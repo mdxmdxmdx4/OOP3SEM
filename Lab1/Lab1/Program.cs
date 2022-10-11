@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Lab1
 {
@@ -12,7 +13,6 @@ namespace Lab1
             string debil2 = "ksk";
             string debil3 = "ктоэтонаписал";
             Console.WriteLine(String.Compare(debil2, debil));
-
             Console.BackgroundColor = ConsoleColor.Black;
             //         1) Типы
             //task A
@@ -65,6 +65,7 @@ namespace Lab1
             Console.WriteLine("\n ----Task F----\n");
             var f1 = 123.12312;
             f1 = 12;
+            dynamic a111 = 12;
             Console.WriteLine("f1 = {0}, {1}", f1, f1.GetType());
             //2)  Строки
             //Task A
@@ -133,7 +134,7 @@ namespace Lab1
             {
                 Console.Write(elem + ",");
             }
-            //Task C           !!!!!!!!!!!!!!!!!!!!!! ДОДЕЛАТЬ!!!!!!!!!!!!
+            //Task C
             Console.WriteLine("\n\n ----Task C---");
             float[][] StepArray = new float[3][];
             for (var ai = 1; ai < 4; ai++)
@@ -169,7 +170,6 @@ namespace Lab1
             Console.WriteLine("\n\n.........4)Tuple..........\n ----Task A----");
             
                         (int, string, char, string, ulong) reference = (1, "HEad", 'g', "food", 65758758);
-
                         Console.WriteLine("весь кортеж -  " + reference + " ");
                         Console.WriteLine("1st item" + reference.Item1);
                         Console.WriteLine("2nd item" + reference.Item3);
@@ -179,7 +179,9 @@ namespace Lab1
             char char1;
             ulong ulong1;
             (_, string1, _, _, ulong1) = reference;
+            Console.WriteLine("ASDSADADASDDDDDDDDDDDDDDDDDD +           " + reference.Item1);
             (int1 , _, char1, string2, _) = reference;
+            (_, _, _, _, _) = reference;
             Console.WriteLine(" ----Task D----");
             var tuple1 = (1.1231f, 2m, 3, "131", 'q');
             var tuple2 = (1.1231f, 2m, 3, "131", 'q');
@@ -187,12 +189,9 @@ namespace Lab1
             Console.WriteLine("\n\n.........5)Local function..........\n");
             static (int, int, int, char) Localfunction(int[] numbers, string str1)
             {
-
                 int min = int.MaxValue;
                 int max = int.MinValue;
                 int sum = 0;
-
-
                 foreach (int elem in numbers)
                 {
                     sum += elem;
@@ -206,11 +205,8 @@ namespace Lab1
                         max = elem;
                     }
                 }
-
                 char letter = str1[0];
-
                 return (max, min, sum, letter);
-
             };
              var nums = new[]
                 { 991, 1241, 777, 11, 31};
@@ -245,7 +241,6 @@ namespace Lab1
             localf2();
             Console.WriteLine("if we will use \" checked \", compiler will throw an error, so using try/catch construction\n");
             localf3();
-
         }
 
     }

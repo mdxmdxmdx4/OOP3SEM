@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Numerics;
 
@@ -6,6 +7,7 @@ namespace lab003
 {
     class Stack
     {
+        public Production prod;
         Stack<int>stackExample = new Stack<int>();
         Stack<string>stringExample = new Stack<string>();
         private int kolvo = 0;
@@ -191,25 +193,7 @@ namespace lab003
                 stackExample = newStack;
                }
                }
-
-
-        public class Production
-        {
-            public Production(string org) //конструктор, добавляющий владельцев
-            {
-                id++;
-                organisation = org;
-            }
-            public void ShowInfo()                  //метод вывод информации
-            {
-                Console.WriteLine($"Id:             {id}");
-                Console.WriteLine($"Организация:    {organisation}\n");
-            }
-            private static int id = 0;
-            private string organisation;
-        }
-
-        public class Developer
+          public class Developer
         {
             public Developer(string Name, string otdel)
             {
@@ -227,10 +211,7 @@ namespace lab003
             private string name;
             private string sector;
         }
-
     }
-
-
     class Program
     {
         static void Main(string[] args)
@@ -270,10 +251,8 @@ namespace lab003
             stack2 = stack1 > stack2;
             stack2.Printall();
 
-            Stack.Production prodd = new Stack.Production("Valve Inc.");
             Stack.Developer dev = new Stack.Developer("Khinets Ilya Sergeevich", "Data Security");
-
-
+            stack2.prod.organisation = "1231";
             stack2.sum();
             stack2.difference();
             stack2.CountOfElems();
