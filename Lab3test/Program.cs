@@ -13,6 +13,7 @@ namespace lab003
         private int kolvo = 0;
         public Stack()
         {
+            prod = new Production("IBM");
         }
         public void Push(int item)
         {
@@ -57,7 +58,7 @@ namespace lab003
             oper.Push(item);      
             oper.kolvo++;
             return oper;
-                
+          
         }
         public static Stack operator --(Stack oper)
         {
@@ -260,6 +261,7 @@ namespace lab003
             string testr = "Lorem. Ipsum. Dolor";
             string testr1 = "Doom";
             testr.SentensX();
+            Console.WriteLine(stack1[1]);
 
         }
 

@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace lab2
 {
-    partial class Airline
+       partial class Airline
     {
         private string _Destination;
         private int _RaceNumber;
@@ -48,14 +48,10 @@ namespace lab2
             set { this._TimeOfDep= value; }
             get { return this._TimeOfDep; }
         }
-
-
         static Airline()    //статический конструктор
         {
             kolvo = 0;
         }
-
-
         public Airline(string Destination, int RaceNumber, string AirplaneType, string WeekDay, DateTime TimeOfDep) //конструктор с параметрами
         {
             id = kolvo;
@@ -80,15 +76,12 @@ namespace lab2
         {
             kolvo--;
         }
-
         public static void Weekday_check(Airline[] Air, out string needed_day)   //проверка по дню недели
         {
 
             Console.WriteLine("Insert a weekday");
-
             needed_day = Console.ReadLine();
             bool IsExistt = false;
-
             foreach (Airline day in Air)
             {
                 if (needed_day == day.WeekDay)
@@ -101,10 +94,8 @@ namespace lab2
             if (IsExistt = false)
             {
                 Console.WriteLine("No results found :(");
-
             }
         }
-
         public static void destination_check(Airline[] arr, ref string needed_weekday) //проверка по месту назначения
         {
             needed_weekday = "Bagdad";
@@ -139,7 +130,7 @@ namespace lab2
 
         }
 
-        public override string ToString()                       //переопределение метода ToString()
+        public override string ToString()                       //переопределение метода ToString() 
         {
             return ($"Пункт назначения: {this.Destination}, День недели: {this.WeekDay}, Номер рейса: {this.RaceNumber}, Тип самолёта: {this.AirplaneType}");
         }
@@ -174,7 +165,7 @@ namespace lab2
                 new Airline("Qatar", 151, "Belavia", "Wednesday", new DateTime(2022, 09, 29, 03, 30, 00)),
                 new Airline()
             };
-
+            Object object1 = new Object();
             Airline.printall(airline);
             airline[2].AirplaneType = "NotBoeing";
             airline[3].RaceNumber = 111;
@@ -190,7 +181,6 @@ namespace lab2
             Console.WriteLine("Checking equality of 2 objects:" + (airline[0].Equals(airline[5])));
             Console.WriteLine("\n\nEnter the city of destination:");
             string needed_place = Console.ReadLine();
-
             Airline.destination_check(airline, ref needed_place);
             Console.WriteLine("value of needed_place after using ref keyword:" + needed_place);
             string needed_day;
@@ -198,14 +188,10 @@ namespace lab2
             Console.WriteLine("---------------------------------------------------------------" + needed_day);
             //Sample sample = new Sample(); //error
             Sample.Create(2);
-
             //анонимный тип
             var someplane = new { Destination = "Rome", RaceNubmer = 969, AirplaneType = "Cessna", WeekDay = "Saturday", TimeOfDep = new DateTime(2022, 09, 15, 16, 45, 00) };
             Console.WriteLine("\n" + someplane.GetType());
-           // someplane.Destination = "Tbilisi"; //error
         }
-
-
     }
 
     abstract class Sample

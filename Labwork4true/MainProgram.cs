@@ -1,5 +1,4 @@
-﻿using lab004;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,30 +10,30 @@ namespace Labwork4true
     {
         static void Main(string[] args)
         {
-            Planet planet = new Planet("планета Земля");
-            planet.Chain();
-            Continent continent = new Continent("Австралия",25200000);
-            Island island = new Island("Сицилия", "Италия", "Серджо Маттарелла", "Евро",6000000, "Евразия", Convert.ToInt32(60 * Math.Pow(10, 6)), 8000000000);
-            Sea sea = new Sea("Саргассово море", "солёная");
+            Government government = new Government("Республика Беларусь", "Александр Лукашенко", "BYN", 9100000);
+            Console.WriteLine(government.Precentage);
+            Water salted = new Water(1234, "солёная");
+            Water presnaya = new Water(4567, "пресная");
+            Sea sea = new Sea("Саргассово море", 12, presnaya );
+            Sea sea2 = new Sea("Красное море", 15, salted);
             sea.PrintName();
-            Console.WriteLine(sea.ToString());
-            Sea sea1 = new Sea("Черное море", "солёная");
-            Console.WriteLine(sea.Equals(sea1));
-            island.ShowHierarchy();
-            island.Chain();
-            Console.WriteLine(island.ToString());
-            object obj1 = new Sea("Черное море", "солёная");
+            Console.WriteLine(sea.Equals(sea2));
+            Continent continent = new Continent("Австралия",25200000);
+            continent.PrintName();
+            Island island = new Island("Сицилия", "Италия",6000000);
+            Island island1 = new Island("Сицилия", "Не Италия", 10000);
+            island1.water.typeOFWater = "пресная";
+            island1.water.square = 1234;
+            object obj1 = new Island("Сицилия", "Италия", 6000000);
             object obj2 = "1234";
-            sea1.TToCompare(obj1);
-            Console.WriteLine(sea1.TToCompare(obj1));
-            Console.WriteLine(sea1.TToCompare(obj2));
-            Console.WriteLine(sea.TToCompare(continent));
-            sea1.Precentage = 13;
-            FirstInterface firstInterface = sea1;
-            sea.Precentage = 12;
+            Console.WriteLine(island.TToCompare(obj1));
+            Console.WriteLine(island.TToCompare(obj2));
+            Console.WriteLine(island1.TToCompare(continent));
+            ((FirstInterface)island1).TToCompare(obj1);
+            FirstInterface firstInterface = island;
             Console.WriteLine(firstInterface.TToCompare(obj1));
-            Government government = new Government("Республика Беларусь","Александр Лукашенко","BYN", 9100000, "Евразия",5340000000);
-            object[] someTypes = { sea, continent, government, island, firstInterface };
+            government.PrintName();
+            object[] someTypes = { continent, government, island1, firstInterface, obj2};
             Console.WriteLine("\n");
             foreach (var item in someTypes)
             {
@@ -56,8 +55,9 @@ namespace Labwork4true
             Console.WriteLine("\n\n");
             object cloneIsl = island.Clone();
             Console.WriteLine(cloneIsl.Equals(island));
+            Console.WriteLine();
             Printer printer = new Printer();
-            object[] lastarray = { planet, continent, sea, government, island, printer };
+            object[] lastarray = { continent, government, cloneIsl, printer, obj2, firstInterface};
             foreach (var item in lastarray)
             {
                 printer.IAmPrinting(item as Ground);

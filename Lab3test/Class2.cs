@@ -8,12 +8,12 @@ namespace lab003
 {
     internal  class Production
     {
-        public Production(string org) //конструктор, добавляющий владельцев
+        public Production(string org)
         {
             id++;
             organisation = org;
         }
-        public void ShowInfo()                  //метод вывод информации
+        public void ShowInfo()                  
         {
             Console.WriteLine($"Id:             {id}");
             Console.WriteLine($"Организация:    {organisation}\n");

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labwork4true
-{
+namespace Labwork5 { 
   interface FirstInterface
     {
         bool TToCompare(object obj);
