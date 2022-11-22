@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab003
 {
-    internal interface IntGeneric <T>
+    internal interface IntGeneric<T>
     {
         void Add(T dt);
         void Delete();

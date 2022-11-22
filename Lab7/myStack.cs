@@ -72,10 +72,12 @@ namespace lab003
             }
         }
         public myStack()
-        { 
+        {
+            kolvo++;
         }
         public myStack(T data)
         {
+            kolvo++;
             stackExample.Push(data);
         }
         public void Push(T item)
@@ -203,6 +205,18 @@ namespace lab003
             }
 
                 return st1;
+        }
+        public void ChangeTheHead<T>(T obj, myStack<T> s1) where T : class, IComparable<T>
+        {
+            if (s1.kolvo >= 1)
+            {
+                s1.Pop();
+                s1.Push(obj);
+            }
+            else
+            {
+                Console.WriteLine("!!!Error!!!");
+            }
         }
         public static void WriteToFile(ref myStack<T> stack)
         {

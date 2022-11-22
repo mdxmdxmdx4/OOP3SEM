@@ -32,9 +32,11 @@ namespace lab003
                 stackDouble += -12314.12313141;
                 stackDouble.Show();
                 stackDouble.Sum();*/
+
                 Island island = new Island("Сицилия", "Италия", 6000000);
                 Island island1 = new Island("Сицилия", "Не Италия", 10000);
                 island1.water.typeOFWater = "пресная";
+
                 island1.water.square = 1234;
                 Island island2 = new Island("Южный", "Новая Зеландия", 2000000);
                 Island island3 = new Island("Гренландия", "Дания", 26000);
@@ -54,8 +56,17 @@ namespace lab003
                 myStack<Island>.WriteToFile(ref stack2);
                 Console.WriteLine("\nЧтение из файла:\n");
                 myStack<Island>.ReadFromFile();
-
-
+                stack2.Show();
+                stack2.ChangeTheHead(island2, stack2);
+                Console.WriteLine("After ChangeTheHead method");
+                stack2.Show();
+                string str1 = "asb";
+                string str2 = "213";
+                myStack<string> sstring = new myStack<string>();
+                sstring.Push(str1);
+                sstring.Printall();
+                stack2.ChangeTheHead(str2, sstring);
+                sstring.Show();
 
             }
             catch (Exception e)
