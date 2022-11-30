@@ -3,6 +3,7 @@ namespace lab08
 {
     public delegate void RenameEventHandler(string name);
     public delegate void NewPropertyEventHandler(string name);
+    public delegate void VersionEventHandler(double ver);
     public class Programmer {
 
         private string name;
@@ -10,8 +11,9 @@ namespace lab08
         {
             name = n;
         }
-        public RenameEventHandler Rename;
-        public NewPropertyEventHandler NewProperty;
+        public event RenameEventHandler Rename;
+        public event VersionEventHandler Version;
+        public event NewPropertyEventHandler NewProperty;
 
         public void CommandCProp(string n)
         {
@@ -23,6 +25,11 @@ namespace lab08
         {
             Rename.Invoke(n);
             Console.WriteLine("^^   Вызвано событие Rename!   ^^");
+        }
+        public void CommandSetVersion(double v)
+        {
+            Version.Invoke(v);
+            Console.WriteLine("^^   Вызвано событие изменения версии!   ^^");
         }
 
     }

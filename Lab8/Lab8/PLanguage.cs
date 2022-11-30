@@ -19,18 +19,18 @@ namespace Lab8
             Prorerties = prorerties;
         }
 
-        public void ChangeName(string n)
+        public void OnRename(string n)
         {
             Console.WriteLine($"---Изменено имя языка {Lang_name} на {n} --");
             Lang_name = n;
         }
-        public void ChangeVer(double v)
+        public void OnVersion(double v)
         {
-            Console.WriteLine("---Изменена версия--");
+            Console.WriteLine($"---Обновлена версия языка {Lang_name}: {v}--");
             Lang_ver = v;
         }
 
-        public void AddProperty(string prop)
+        public void OnAddProperty(string prop)
         {
             string[] temp = new string[Prorerties.Length + 1];
             for (int i = 0; i < Prorerties.Length; i++)
@@ -41,7 +41,7 @@ namespace Lab8
             Prorerties = temp;
             Console.WriteLine($"Языку {Lang_name} добавлено свойство: {prop}");
         }
-        public void DeleteProperty(string somePror)
+        public void OnDeleteProperty(string somePror)
         {
             bool y = false;
             for (int i = 0; i < Prorerties.Length; i++)

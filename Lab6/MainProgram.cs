@@ -7,8 +7,9 @@ using System.Diagnostics;
 
 namespace Labwork5
 {
-   partial class Government : Ground
+   partial class Government<T> : Ground
     {
+        T[] mass;
         public override void Info()
         {
             Console.WriteLine("Cтрана - " + Name);
@@ -97,8 +98,8 @@ namespace Labwork5
                 Console.WriteLine(ex5.Message);
             }
 
-            
 
+            Debugger.Break();
 
             // вывод параметров
             try
@@ -113,7 +114,7 @@ namespace Labwork5
             }
             finally
             {
-                Console.WriteLine("Вся информация об ощибке выведена!");
+                Console.WriteLine("Вся информация об ошибке выведена!");
             };
           /*  try
             {
@@ -126,7 +127,7 @@ namespace Labwork5
 
             //последовательный вызов блоков try-catch-finally
             Console.WriteLine("\n\n-------------------------------------------------\n\n");
-            Debugger.Break();
+      
             try
             {
                 OneOfTheLast();
@@ -141,8 +142,8 @@ namespace Labwork5
             }
             Console.WriteLine("Конец метода в Main");
             Debug.Assert(island1.Name != "Гренландия", "Это самый крупный остров на земле");
-              /* int[] aa = null;
-               Debug.Assert(aa != null, "Values array cannot be null");*/
+               int[] aa = null;
+               Debug.Assert(aa != null, "Values array cannot be null");
         }
 
         static void MathOP(int x, int y)
