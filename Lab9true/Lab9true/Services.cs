@@ -5,7 +5,6 @@ namespace Lab9true
 {
     public class Services
     {
-
         public string title;
         public string description;
         public int price;
@@ -14,7 +13,6 @@ namespace Lab9true
             title = t;
             description = d;    
             price = p; 
-
         }
         public override string ToString()
         {
