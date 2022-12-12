@@ -13,6 +13,8 @@ namespace Lab12
             LDIFileInfo.FileInfo("C://Users/mdxbu/Downloads/Genesis Xenon 200 rev.2.0 software v1.3.zip");
             /*LDIFileManager.taskA("C://");
             LDIFileManager.taskBC("C://Users/mdxbu/Labs/OOP/Лекции", "*.pdf");*/
+            Console.WriteLine();
+            LDILog.FindByDateTime(DateTime.Now);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Lab12
                 Console.WriteLine($"Свободно места: {el.TotalFreeSpace}");
                 Console.WriteLine($"Доступно: {el.AvailableFreeSpace}");
             }
+            LDILog.WriteLogs("LDIDiskInfo.DiskInfo", "", "");
         }
 
     }

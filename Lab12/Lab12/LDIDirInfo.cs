@@ -19,6 +19,7 @@ namespace Lab12
                 Console.WriteLine("Кол-во подпапок:" + subdirs.Length);
                 var a =  Directory.GetParent(path);
                 Console.WriteLine("Родительская папка: " + a);
+                LDILog.WriteLogs("LDIFDirInfo.DirectoryInfo", "", path);
             }
             else
             {

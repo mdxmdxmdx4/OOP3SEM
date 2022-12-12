@@ -35,34 +35,39 @@ namespace Lab12
                 {
                     file.WriteLine(fa.Name.ToString());
                 }
+                LDILog.WriteLogs("LDIFileManager.taskA", "LDIDirInfo", @"C:\Users\mdxbu\Labs\LDIInspect\") ;
             }
 
                 var dirwithLDI = new FileInfo(subdir.FullName + @"\" + "LDIDirInfo.txt");
-                dirwithLDI.CopyTo(subdir.FullName + @"\" + "LDIDirInfo_REPLICATE" + Convert.ToString(new Random().Next(100)) + ".txt");
+                var DD  = dirwithLDI.CopyTo(subdir.FullName + @"\" + "LDIDirInfo_REPLICATE" + Convert.ToString(new Random().Next(100)) + ".txt");
                 dirwithLDI.Delete();
-
+                LDILog.WriteLogs("LDIFileManager.taskA", DD.Name, @"C:\Users\mdxbu\Labs\");
 
         }
 
     public static void taskBC(string dirPath, string extension)
         {
-              var xxfiles = new DirectoryInfo("C://Users/mdxbu/Labs/LDIFiles");
+            var xxfiles = new DirectoryInfo("C://Users/mdxbu/Labs/LDIFiles");
             if (!xxfiles.Exists)
             {
                 xxfiles.Create();
             }
+            LDILog.WriteLogs("taskBCCreatingDir", "", "C://Users/mdxbu/Labs/LDIFiles");
               var dir = new DirectoryInfo(dirPath);
               FileInfo[] f = dir.GetFiles(extension, SearchOption.AllDirectories);
               foreach (var x in f )
               {
                   x.CopyTo(xxfiles + @"\" + x.Name + x.Extension);
+                LDILog.WriteLogs("taskBCcopy", x.Name, dir.FullName);
               }
             CreateArch("C://Users/mdxbu/Labs/LDIFiles");
             FileInfo[] xxfiles2 = xxfiles.GetFiles();
             foreach(var el in xxfiles2) {
                 el.MoveTo("C://Users/mdxbu/Labs/LDIInspect"+ @"\" + el.Name, true);
+                LDILog.WriteLogs("taskBCmove", el.Name, el.FullName);
             }
             xxfiles.Delete();
+            LDILog.WriteLogs("taskBCDelDir", "", xxfiles.FullName);
 
         }
 
@@ -70,6 +75,7 @@ namespace Lab12
         {
                 const string zipName = @"C://Users/mdxbu/Labs/LDIFiles.zip";
                 ZipFile.CreateFromDirectory(dir, zipName);
+            LDILog.WriteLogs("CreateArch", "LDIFiles.zip", zipName);
                 var direct = new DirectoryInfo(dir);
             try
             {
@@ -83,6 +89,8 @@ namespace Lab12
             using (ZipArchive archive = ZipFile.OpenRead(zipName))
             {
                 archive.ExtractToDirectory(@"C:\Users\mdxbu\Labs\forZIP", true);
+                LDILog.WriteLogs("ExtractingArch", "", @"C:\Users\mdxbu\Labs\forZIP");
+                
 
             }
         }

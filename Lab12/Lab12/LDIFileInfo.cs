@@ -19,6 +19,7 @@ namespace Lab12
                 Console.WriteLine("Название: " + fi.Name);
                 Console.WriteLine("Дата создания:" + fi.CreationTime);
                 Console.WriteLine("Дата последнего изменения: " + fi.LastWriteTime);
+                LDILog.WriteLogs("LDIFileInfo.FileInfo", fi.Name, path);
 
             }
 
