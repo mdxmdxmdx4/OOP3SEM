@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Compression;
 
 namespace Lab12
 {
@@ -43,13 +44,12 @@ namespace Lab12
 
         }
 
-    public static void taskB(string dirPath, string extension)
+    public static void taskBC(string dirPath, string extension)
         {
               var xxfiles = new DirectoryInfo("C://Users/mdxbu/Labs/LDIFiles");
-              xxfiles.Create();
             if (!xxfiles.Exists)
             {
-                return;
+                xxfiles.Create();
             }
               var dir = new DirectoryInfo(dirPath);
               FileInfo[] f = dir.GetFiles(extension, SearchOption.AllDirectories);
@@ -57,7 +57,7 @@ namespace Lab12
               {
                   x.CopyTo(xxfiles + @"\" + x.Name + x.Extension);
               }
-
+            CreateArch("C://Users/mdxbu/Labs/LDIFiles");
             FileInfo[] xxfiles2 = xxfiles.GetFiles();
             foreach(var el in xxfiles2) {
                 el.MoveTo("C://Users/mdxbu/Labs/LDIInspect"+ @"\" + el.Name, true);
@@ -66,6 +66,26 @@ namespace Lab12
 
         }
 
+        public static void CreateArch(string dir)
+        {
+                const string zipName = @"C://Users/mdxbu/Labs/LDIFiles.zip";
+                ZipFile.CreateFromDirectory(dir, zipName);
+                var direct = new DirectoryInfo(dir);
+            try
+            {
+                foreach (var innerFile in direct.GetFiles())
+                    ZipFile.ExtractToDirectory(zipName, dir);
+            }
+            catch
+            {
+                
+            }
+            using (ZipArchive archive = ZipFile.OpenRead(zipName))
+            {
+                archive.ExtractToDirectory(@"C:\Users\mdxbu\Labs\forZIP", true);
+
+            }
+        }
 
 
 
