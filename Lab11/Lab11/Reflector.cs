@@ -19,7 +19,6 @@ namespace Lab11
             {
                 string full = "Lab11." + Name;
                 var mytype = Type.GetType(full);
-                Assembly assembly = Assembly.GetExecutingAssembly();
                 Console.WriteLine($"Сборка - {mytype.Assembly}");
                 Write.WriteLine($"Сборка - {mytype.Assembly}");
             }
