@@ -1,14 +1,10 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
 namespace Lab9true
 {
-
-
     class Program {
         static void Main(string[] args)
         {
@@ -97,7 +93,6 @@ namespace Lab9true
                 case NotifyCollectionChangedAction.Add:
                     Console.WriteLine($"Добавлен новый элемент");
                     break;
-
                 case NotifyCollectionChangedAction.Remove:
                     Console.WriteLine($"Удален элемент");
                     break;
