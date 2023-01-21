@@ -12,7 +12,7 @@ namespace Lab15
 {
     public  static partial class Tasks
     {
-        public static void MatriX()
+        public static void MatriXM()
         {
             var sw = new Stopwatch();
             sw.Start();
@@ -62,7 +62,7 @@ namespace Lab15
         public static void Task1()
         {
             Console.WriteLine("-----Task 1-----");
-            var task1 = new Task(MatriX, TaskCreationOptions.LongRunning);
+            var task1 = new Task(MatriXM, TaskCreationOptions.LongRunning);
             Console.WriteLine($"Task #{task1.Id}, статус - {task1.Status}");
             task1.Start();
             while (true)
@@ -78,7 +78,7 @@ namespace Lab15
         {
             Console.WriteLine("\n-----Task 2-----");
             CancellationTokenSource cts = new CancellationTokenSource();
-            new Task(MatriX, cts.Token).Start();
+            new Task(MatriXM, cts.Token).Start();
             Thread.Sleep(10);
             cts.Cancel();
         }
@@ -180,8 +180,6 @@ namespace Lab15
 
             Console.WriteLine("Время выполнения параллельного алгоритма(ForEach): " + sw.ElapsedMilliseconds + " мс");
         }
-
-
         public static void Task6()
         {
             Console.WriteLine("\n-----Task 6-----");
@@ -219,7 +217,6 @@ namespace Lab15
             Console.WriteLine("Конец метода Task8");
             Console.ReadKey();
         }
-
         public static T[] Sort<T>(T[] arr) where T : IComparable
         {
             bool isSorted = false;
@@ -245,8 +242,6 @@ namespace Lab15
         {
             return frst + scnd + thrd;
         }
-
     }
-    
 }
   
